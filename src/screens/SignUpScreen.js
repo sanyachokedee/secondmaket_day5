@@ -18,7 +18,7 @@ import Feather from 'react-native-vector-icons/Feather'
 import MainTheme, { colors } from '../themes/MainTheme'
 import { Overlay } from 'react-native-elements'
 
-import { AuthContext } from './../store/context'
+import { AuthContext } from './../store/Context'
 
 import { auth } from './../firebase/firebase-config'
 import { createUserWithEmailAndPassword } from "firebase/auth"
