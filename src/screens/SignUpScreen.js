@@ -16,34 +16,44 @@ import LinearGradient from 'react-native-linear-gradient'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import Feather from 'react-native-vector-icons/Feather'
 import MainTheme, { colors } from '../themes/MainTheme'
+import { } from 'react-native-elements'
+
+import { auth } from './../firebase/firebase-config'
+import { createUserWithEmailAndPassword } from "firebase/auth"
 
 const SignUpScreen = ({ navigation }) => {
   // สร้างตัวแปรรับค่าจากฟอร์ม
   const [data, setData] = useState({
-    username: '',
+    email: '',
     password: '',
     confirm_password: '',
-    check_textInputChange: false,
+    check_textEmailChange: false,
     secureTextEntry: true,
     confirm_secureTextEntry: true,
     isValidUser: true,
     isValidPassword: true,
     isValidConfirmPassword: true,
+    isValidPasswordMatch: true
   })
 
-  const textInputChange = val => {
+  const [visible, setVisible] = useState(false)
+  const [formError, setFormError] = useState(false)
+  const [signUpError, setSignUpError] = useState(false)
+  const [signUpSuccess, setSignUpSuccess] = useState(false)
+
+  const textEmailChange = val => {
     if (val.trim().length >= 4) {
       setData({
         ...data,
-        username: val,
-        check_textInputChange: true,
+        email: val,
+        check_textEmailChange: true,
         isValidUser: true,
       })
     } else {
       setData({
         ...data,
-        username: val,
-        check_textInputChange: false,
+        email: val,
+        check_textEmailChange: false,
         isValidUser: false,
       })
     }
@@ -88,34 +98,94 @@ const SignUpScreen = ({ navigation }) => {
     })
   }
 
-  const updateConfirmSecureTextEntry = () => {
-    setData({
-      ...data,
-      confirm_secureTextEntry: !data.confirm_secureTextEntry,
-    })
+  // function ตรวจสอบ email , password https://youtu.be/LJd8dza062k?t=9935
+  const registerHandle = (email, password) => {
+    if (!data.isValidEmail || !data.isValidPassword || (data.email.length == 0 || data.password.length == 0 || data.confirm_password == 0 || data.password != data.confirm_password)) {
+      setVisible(true)
+      setFormError(true)
+      return
+    }else{
+      console.log(data.email+ data.password)
+      createUserWithEmailAndPassword(auth, data.email, data.password)
+      .then((userCredential) => {
+        const user = userCredential.user
+        console.log(JSON.stringify(user, null, 2))
+        setVisible(true)
+        setFormError(false)
+        setSignUpError(false)
+        setSignUpSuccess(true)
+
+        // Register Success เรียก method signup
+        signUp(data.email, user.stsTokenManager.accessToken)
+
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(error)
+        setVisible(true)
+        setFormError(false)
+        setSignUpError(true)
+      })
+    }
   }
 
+  registerHandle = (email, password) => {
+
+  }
   return (
     <View style={styles.container}>
+
+
+{
+        formError ? 
+        <Overlay isVisible={visible} onBackdropPress={()=>setVisible(false)}>
+          <View style={{padding: 20,}}>
+            <Text style={styles.title}>มีข้อผิดพลาด</Text>
+            <Text style={styles.subtitle}>ป้อนอีเมล์และรหัสผ่านให้ถูกต้องก่อน</Text>
+          </View>
+        </Overlay> : null
+      }
+
+      {
+        signUpError ? 
+        <Overlay isVisible={visible} onBackdropPress={()=>setVisible(false)}>
+          <View style={{padding: 20,}}>
+            <Text style={styles.title}>มีข้อผิดพลาด</Text>
+            <Text style={styles.subtitle}>ไม่สามารถลงทะเบียนได้</Text>
+          </View>
+        </Overlay> : null
+      }
+
+      {
+        signUpSuccess ? 
+        <Overlay isVisible={visible} onBackdropPress={()=>setVisible(false)}>
+          <View style={{padding: 20,}}>
+            <Text style={styles.title}>สำเร็จ</Text>
+            <Text style={styles.subtitle}>ลงทะเบียนเรียบร้อยแล้ว</Text>
+          </View>
+        </Overlay> : null
+      }
+
       <StatusBar backgroundColor={colors.background} barStyle="light-content" />
       <View style={styles.header}>
         <Text style={styles.text_header}>ลงทะเบียนฟรี!</Text>
       </View>
       <Animatable.View animation="fadeInUpBig" style={styles.footer}>
         <ScrollView>
-          <Text style={styles.text_footer}>Username</Text>
+          <Text style={styles.text_footer}>อีเมล์</Text>
 
           <View style={styles.action}>
             <FontAwesome name="user-o" color={colors.text} size={20} />
             <TextInput
-              placeholder="ป้อนชื่อผู้ใช้"
+              placeholder="ป้อนชื่ออีเมล์"
               style={styles.textInput}
               autoCapitalize="none"
-              onChangeText={(val) => textInputChange(val)}
+              onChangeText={(val) => textEmailChange(val)}
             />
 
             {
-              data.check_textInputChange ? 
+              data.check_textEmailChange ? 
               <Animatable.View animation="bounceIn">
                   <Feather 
                       name="check-circle"
@@ -132,7 +202,7 @@ const SignUpScreen = ({ navigation }) => {
           data.isValidUser ? null : (
             <Animatable.View animation="fadeInLeftBig" duration={500}>
             <Text style={styles.errorMsg}>
-              ชื่อผู้ใช้ต้องไม่น้อยกว่า 4 ตัวอักษร
+              ป้อนอีเมล์ต้องไม่น้อยกว่า 4 ตัวอักษร
             </Text>
             </Animatable.View>
             )
@@ -145,7 +215,7 @@ const SignUpScreen = ({ navigation }) => {
                 marginTop: 35,
               },
             ]}>
-            Password
+            รหัสผ่าน
           </Text>
           <View style={styles.action}>
             <Feather name="lock" color={colors.textDark} size={20} />
@@ -180,7 +250,7 @@ const SignUpScreen = ({ navigation }) => {
                 marginTop: 35,
               },
             ]}>
-            Confirm Password
+            ยืนยันรหัสผ่าน
           </Text>
           <View style={styles.action}>
             <Feather name="lock" color={colors.textDark} size={20} />
@@ -222,7 +292,9 @@ const SignUpScreen = ({ navigation }) => {
             </Text>
           </View>
           <View style={styles.button}>
-            <TouchableOpacity style={styles.signIn} onPress={() => {}}>
+            <TouchableOpacity style={styles.signIn} onPress={() => {
+              registerHandle(data.email,data.password)
+            }}>
               <LinearGradient
                 colors={[colors.background1, colors.background]}
                 style={styles.signIn}>

@@ -69,6 +69,15 @@
 		<string>Octicons.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
+		<string>NotoSerifThai-Black.ttf</string>
+		<string>NotoSerifThai-Bold.ttf</string>
+		<string>NotoSerifThai-ExtraBold.ttf</string>
+		<string>NotoSerifThai-ExtraLight.ttf</string>
+		<string>NotoSerifThai-Light.ttf</string>
+		<string>NotoSerifThai-Medium.ttf</string>
+		<string>NotoSerifThai-Regular.ttf</string>
+		<string>NotoSerifThai-SemiBold.ttf</string>
+		<string>NotoSerifThai-Thin.ttf</string>
 	</array>
 </dict>
 </plist>

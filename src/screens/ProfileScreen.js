@@ -105,5 +105,6 @@ const styles = StyleSheet.create({
   },
   container: {
     marginVertical: 10,
+    
   },
 })

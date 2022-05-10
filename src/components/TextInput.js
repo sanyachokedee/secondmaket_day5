@@ -17,6 +17,7 @@ function AppTextInput({ icon, width = '100%', ...otherProps }) {
         />
       )}
       <TextInput
+      style={styles.inputField}
         placeholderTextColor={colors.medium}
         {...otherProps}
       />
@@ -37,6 +38,11 @@ const styles = StyleSheet.create({
   icon: {
     marginRight: 10,
   },
+  inputField: {
+    width: '100%',
+    fontSize: 18,
+    fontFamily: "NotoSerifThai-Regular"
+  }
 })
 
 export default AppTextInput

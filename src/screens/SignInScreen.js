@@ -314,7 +314,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     paddingHorizontal: 20,
-    paddingBottom: 50,
+    paddingBottom: 50,    
   },
   footer: {
     flex: 3,
@@ -326,8 +326,9 @@ const styles = StyleSheet.create({
   },
   text_header: {
     color: colors.textLight,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     fontSize: 30,
+    fontFamily: 'NotoSerifThai-SemiBold',
   },
   text_footer: {
     color: colors.background,

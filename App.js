@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navigation from './src/navigations/Navigation'
+import GlobalFont from 'react-native-global-font'
 
 const App = () => {
-  return <Navigation/>
+
+  useEffect(() => {
+    let fontName = 'NotoSerifThai-Regular'
+    GlobalFont.applyGlobal(fontName)
+  }, [])
+  
+
+  return <Navigation />
 }
 
 export default App

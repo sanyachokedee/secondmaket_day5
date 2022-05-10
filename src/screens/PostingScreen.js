@@ -33,13 +33,12 @@ const PostingScreen = () => {
           validationSchema={validationSchema}
         >
           <FormImagePicker name="images" />
-          <FormField maxLength={255} name="title" style={{fontSize: 18}} placeholder="ชื่อสินค้า" />
+          <FormField maxLength={255} name="title"  placeholder="ชื่อสินค้า" />
           <FormField
             keyboardType="numeric"
             maxLength={8}
             name="price"
             placeholder="ราคา"
-            style={{fontSize: 18}}
           />
           <FormField
             maxLength={255}
@@ -47,7 +46,6 @@ const PostingScreen = () => {
             name="description"
             numberOfLines={3}
             placeholder="รายละเอียดสินค้า"
-            style={{fontSize: 18}}
           />
           <SubmitButton title="ลงประกาศ" />
         </Form>

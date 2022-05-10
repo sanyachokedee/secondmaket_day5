@@ -12,6 +12,7 @@ import * as Animatable from 'react-native-animatable'
 import LinearGradient from 'react-native-linear-gradient'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import  MainTheme, { colors }  from '../themes/MainTheme'
+import { GlobalFont } from 'react-native-global-font';
 
 const SplashScreen = ({ navigation }) => {
 
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
   title: {
     color: colors.textDark,
     fontSize: 30,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
   },
   text: {
     color: 'grey',
@@ -100,6 +101,7 @@ const styles = StyleSheet.create({
   },
   textSign: {
     color: 'white',
-    fontWeight: 'bold',
+    // fontFamily: 'NotoSerifThai-Bold',
+    // fontWeight: 'bold',
   },
 })

@@ -12,12 +12,28 @@ const Tab = createBottomTabNavigator()
 
 const AppNavigator = () => {
   return (
-    <Tab.Navigator>
+    
+    <Tab.Navigator screenOptions={{ 
+      tabBarStyle: {
+        paddingVertical: Platform.OS === 'ios' ? 20 : 3,
+        paddingBottom: 5,
+        height: 56,
+        // backgroundColor: 'teal'
+      },
+      tabBarLabelStyle: {
+        fontSize: 14,
+        // color: '#fff'
+      },
+      headerTitleStyle: {
+        fontFamily: 'NotoSansThai-Regular'
+      },
+     }}>
       <Tab.Screen
         name="Feed"
         component={FeedNavigator}
         options={{
           headerShown: false,
+          tabBarLabel: 'สินค้า',
           tabBarIcon: ({ color, size }) => (
             <MaterialIcons name="home" color={color} size={size} />
           ),
@@ -28,7 +44,8 @@ const AppNavigator = () => {
         component={MarketScreen}
         options={{
           headerShown: true,
-          headerTitle: 'Markets',
+          headerTitle: 'ตลาด',
+          tabBarLabel: 'ตลาด',
           tabBarIcon: ({ color, size }) => (
             <MaterialIcons name="storefront" color={color} size={size} />
           ),
@@ -39,7 +56,8 @@ const AppNavigator = () => {
         component={PostingScreen}
         options={({ navigation }) => ({
           headerShown: true,
-          headerTitle: 'Posting',
+          headerTitle: 'ลงประกาศ',
+          tabBarLabel: 'ลงประกาศ',
           tabBarButton: () => (
             <NewListingButton
               onPress={() => navigation.navigate('Posting')}
@@ -59,7 +77,8 @@ const AppNavigator = () => {
         component={ChatScreen}
         options={{
           headerShown: true,
-          headerTitle: 'Chats',
+          headerTitle: 'แชท',
+          tabBarLabel: 'แชท',
           tabBarIcon: ({ color, size }) => (
             <MaterialIcons name="chat-bubble-outline" color={color} size={size} />
           ),
@@ -70,6 +89,8 @@ const AppNavigator = () => {
         component={ProfileNavigator}
         options={{
           headerShown: false,
+          headerTitle: 'โปรไฟล์',
+          tabBarLabel: 'โปรไฟล์',
           tabBarIcon: ({ color, size }) => (
             <MaterialIcons name="person-outline" color={color} size={size} />
           ),

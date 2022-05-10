@@ -28,6 +28,15 @@
 		281A89B1580D425B8CD987A7 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F467742985184CA5B186A7DA /* Octicons.ttf */; };
 		682988DBECA944A19321C588 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 03B11BE16D2E48B28972278E /* SimpleLineIcons.ttf */; };
 		DDE4F1095B884929BB02A996 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16AAA914F3454A588EF606FC /* Zocial.ttf */; };
+		1B9BEAB71B7A4892BC192906 /* NotoSerifThai-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 40422DEEF9DA48F7A6CD543D /* NotoSerifThai-Black.ttf */; };
+		E986A0D4059D4D089BED20FE /* NotoSerifThai-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F3A72CFEF0354920B15FA776 /* NotoSerifThai-Bold.ttf */; };
+		22FA2B46953B4EE88A5448A7 /* NotoSerifThai-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 90750AC8CA1A4FF798C8B1E4 /* NotoSerifThai-ExtraBold.ttf */; };
+		9F1EE5AEDF5642BD9288C210 /* NotoSerifThai-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33356578C0034ADE9C04CDAA /* NotoSerifThai-ExtraLight.ttf */; };
+		38EDF624D0EF4F5BB417148A /* NotoSerifThai-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0C13980622B44EFBB6CBD121 /* NotoSerifThai-Light.ttf */; };
+		66574F8BA41E40EDA68CD53F /* NotoSerifThai-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 92581EF999AA430887720E94 /* NotoSerifThai-Medium.ttf */; };
+		5D3F286E674F45E28363A30E /* NotoSerifThai-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 61D310E7AFDC4AF785EBA311 /* NotoSerifThai-Regular.ttf */; };
+		5BE5CD39BB74488390F68511 /* NotoSerifThai-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A2C5CEF985A24862AB1ABFF5 /* NotoSerifThai-SemiBold.ttf */; };
+		6288DB33CCEE4BF28CC8C695 /* NotoSerifThai-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DEB9C31900BA44918059B638 /* NotoSerifThai-Thin.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +77,15 @@
 		F467742985184CA5B186A7DA /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		03B11BE16D2E48B28972278E /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		16AAA914F3454A588EF606FC /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		40422DEEF9DA48F7A6CD543D /* NotoSerifThai-Black.ttf */ = {isa = PBXFileReference; name = "NotoSerifThai-Black.ttf"; path = "../src/assets/fonts/NotoSerifThai-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F3A72CFEF0354920B15FA776 /* NotoSerifThai-Bold.ttf */ = {isa = PBXFileReference; name = "NotoSerifThai-Bold.ttf"; path = "../src/assets/fonts/NotoSerifThai-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		90750AC8CA1A4FF798C8B1E4 /* NotoSerifThai-ExtraBold.ttf */ = {isa = PBXFileReference; name = "NotoSerifThai-ExtraBold.ttf"; path = "../src/assets/fonts/NotoSerifThai-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		33356578C0034ADE9C04CDAA /* NotoSerifThai-ExtraLight.ttf */ = {isa = PBXFileReference; name = "NotoSerifThai-ExtraLight.ttf"; path = "../src/assets/fonts/NotoSerifThai-ExtraLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0C13980622B44EFBB6CBD121 /* NotoSerifThai-Light.ttf */ = {isa = PBXFileReference; name = "NotoSerifThai-Light.ttf"; path = "../src/assets/fonts/NotoSerifThai-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		92581EF999AA430887720E94 /* NotoSerifThai-Medium.ttf */ = {isa = PBXFileReference; name = "NotoSerifThai-Medium.ttf"; path = "../src/assets/fonts/NotoSerifThai-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		61D310E7AFDC4AF785EBA311 /* NotoSerifThai-Regular.ttf */ = {isa = PBXFileReference; name = "NotoSerifThai-Regular.ttf"; path = "../src/assets/fonts/NotoSerifThai-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A2C5CEF985A24862AB1ABFF5 /* NotoSerifThai-SemiBold.ttf */ = {isa = PBXFileReference; name = "NotoSerifThai-SemiBold.ttf"; path = "../src/assets/fonts/NotoSerifThai-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DEB9C31900BA44918059B638 /* NotoSerifThai-Thin.ttf */ = {isa = PBXFileReference; name = "NotoSerifThai-Thin.ttf"; path = "../src/assets/fonts/NotoSerifThai-Thin.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +194,15 @@
 				F467742985184CA5B186A7DA /* Octicons.ttf */,
 				03B11BE16D2E48B28972278E /* SimpleLineIcons.ttf */,
 				16AAA914F3454A588EF606FC /* Zocial.ttf */,
+				40422DEEF9DA48F7A6CD543D /* NotoSerifThai-Black.ttf */,
+				F3A72CFEF0354920B15FA776 /* NotoSerifThai-Bold.ttf */,
+				90750AC8CA1A4FF798C8B1E4 /* NotoSerifThai-ExtraBold.ttf */,
+				33356578C0034ADE9C04CDAA /* NotoSerifThai-ExtraLight.ttf */,
+				0C13980622B44EFBB6CBD121 /* NotoSerifThai-Light.ttf */,
+				92581EF999AA430887720E94 /* NotoSerifThai-Medium.ttf */,
+				61D310E7AFDC4AF785EBA311 /* NotoSerifThai-Regular.ttf */,
+				A2C5CEF985A24862AB1ABFF5 /* NotoSerifThai-SemiBold.ttf */,
+				DEB9C31900BA44918059B638 /* NotoSerifThai-Thin.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -287,6 +314,15 @@
 				281A89B1580D425B8CD987A7 /* Octicons.ttf in Resources */,
 				682988DBECA944A19321C588 /* SimpleLineIcons.ttf in Resources */,
 				DDE4F1095B884929BB02A996 /* Zocial.ttf in Resources */,
+				1B9BEAB71B7A4892BC192906 /* NotoSerifThai-Black.ttf in Resources */,
+				E986A0D4059D4D089BED20FE /* NotoSerifThai-Bold.ttf in Resources */,
+				22FA2B46953B4EE88A5448A7 /* NotoSerifThai-ExtraBold.ttf in Resources */,
+				9F1EE5AEDF5642BD9288C210 /* NotoSerifThai-ExtraLight.ttf in Resources */,
+				38EDF624D0EF4F5BB417148A /* NotoSerifThai-Light.ttf in Resources */,
+				66574F8BA41E40EDA68CD53F /* NotoSerifThai-Medium.ttf in Resources */,
+				5D3F286E674F45E28363A30E /* NotoSerifThai-Regular.ttf in Resources */,
+				5BE5CD39BB74488390F68511 /* NotoSerifThai-SemiBold.ttf in Resources */,
+				6288DB33CCEE4BF28CC8C695 /* NotoSerifThai-Thin.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
