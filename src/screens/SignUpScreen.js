@@ -19,6 +19,7 @@ import MainTheme, { colors } from '../themes/MainTheme'
 import { } from 'react-native-elements'
 
 import { auth } from './../firebase/firebase-config'
+console.log(auth)
 import { createUserWithEmailAndPassword } from "firebase/auth"
 
 const SignUpScreen = ({ navigation }) => {
@@ -40,6 +41,9 @@ const SignUpScreen = ({ navigation }) => {
   const [formError, setFormError] = useState(false)
   const [signUpError, setSignUpError] = useState(false)
   const [signUpSuccess, setSignUpSuccess] = useState(false)
+
+  // เรียกใช้งาน Context
+  const { signUp } = useContext(AuthContext)
 
   const textEmailChange = val => {
     if (val.trim().length >= 4) {
