@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import {
   View,
   Text,
@@ -16,22 +16,24 @@ import LinearGradient from 'react-native-linear-gradient'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import Feather from 'react-native-vector-icons/Feather'
 import MainTheme, { colors } from '../themes/MainTheme'
-import { } from 'react-native-elements'
+import { Overlay } from 'react-native-elements'
+
+import { AuthContext } from './../store/context'
 
 import { auth } from './../firebase/firebase-config'
-console.log(auth)
 import { createUserWithEmailAndPassword } from "firebase/auth"
 
 const SignUpScreen = ({ navigation }) => {
+
   // สร้างตัวแปรรับค่าจากฟอร์ม
   const [data, setData] = useState({
     email: '',
     password: '',
     confirm_password: '',
-    check_textEmailChange: false,
+    check_textInputChange: false,
     secureTextEntry: true,
     confirm_secureTextEntry: true,
-    isValidUser: true,
+    isValidEmail: true,
     isValidPassword: true,
     isValidConfirmPassword: true,
     isValidPasswordMatch: true
@@ -50,14 +52,14 @@ const SignUpScreen = ({ navigation }) => {
       setData({
         ...data,
         email: val,
-        check_textEmailChange: true,
+        check_textInputChange: true,
         isValidUser: true,
       })
     } else {
       setData({
         ...data,
         email: val,
-        check_textEmailChange: false,
+        check_textInputChange: false,
         isValidUser: false,
       })
     }
@@ -81,16 +83,27 @@ const SignUpScreen = ({ navigation }) => {
 
   const handleConfirmPasswordChange = val => {
     if (val.trim().length >= 8) {
-      setData({
-        ...data,
-        confirm_password: val,
-        isValidConfirmPassword: true,
-      })
+      if(val != data.password){
+        setData({
+          ...data,
+          confirm_password: val,
+          isValidConfirmPassword: true,
+          isValidPasswordMatch: false
+        })
+      }else{
+        setData({
+          ...data,
+          confirm_password: val,
+          isValidConfirmPassword: true,
+          isValidPasswordMatch: true
+        })
+      }
     } else {
       setData({
         ...data,
         confirm_password: val,
         isValidConfirmPassword: false,
+        isValidPasswordMatch: true
       })
     }
   }
@@ -102,7 +115,13 @@ const SignUpScreen = ({ navigation }) => {
     })
   }
 
-  // function ตรวจสอบ email , password https://youtu.be/LJd8dza062k?t=9935
+  const updateConfirmSecureTextEntry = () => {
+    setData({
+      ...data,
+      confirm_secureTextEntry: !data.confirm_secureTextEntry,
+    })
+  }
+
   const registerHandle = (email, password) => {
     if (!data.isValidEmail || !data.isValidPassword || (data.email.length == 0 || data.password.length == 0 || data.confirm_password == 0 || data.password != data.confirm_password)) {
       setVisible(true)
@@ -134,14 +153,10 @@ const SignUpScreen = ({ navigation }) => {
     }
   }
 
-  registerHandle = (email, password) => {
-
-  }
   return (
     <View style={styles.container}>
 
-
-{
+      {
         formError ? 
         <Overlay isVisible={visible} onBackdropPress={()=>setVisible(false)}>
           <View style={{padding: 20,}}>
@@ -182,14 +197,14 @@ const SignUpScreen = ({ navigation }) => {
           <View style={styles.action}>
             <FontAwesome name="user-o" color={colors.text} size={20} />
             <TextInput
-              placeholder="ป้อนชื่ออีเมล์"
+              placeholder="ป้อนอีเมล์"
               style={styles.textInput}
               autoCapitalize="none"
               onChangeText={(val) => textEmailChange(val)}
             />
 
             {
-              data.check_textEmailChange ? 
+              data.check_textInputChange ? 
               <Animatable.View animation="bounceIn">
                   <Feather 
                       name="check-circle"
@@ -203,10 +218,10 @@ const SignUpScreen = ({ navigation }) => {
           </View>
 
           {
-          data.isValidUser ? null : (
+          data.isValidEmail ? null : (
             <Animatable.View animation="fadeInLeftBig" duration={500}>
             <Text style={styles.errorMsg}>
-              ป้อนอีเมล์ต้องไม่น้อยกว่า 4 ตัวอักษร
+              อีเมล์ต้องไม่น้อยกว่า 4 ตัวอักษร
             </Text>
             </Animatable.View>
             )
@@ -274,13 +289,25 @@ const SignUpScreen = ({ navigation }) => {
             </TouchableOpacity>
           </View>
 
-          {data.isValidConfirmPassword ? null : (
+          {
+            data.isValidConfirmPassword ? null : (
+            <Animatable.View animation="fadeInLeftBig" duration={500}>
+              <Text style={styles.errorMsg}>
+                รหัสผ่านต้องไม่น้อยกว่า 8 ตัวอักษร
+              </Text>
+            </Animatable.View>
+            )
+          }
+
+          {
+          data.isValidPasswordMatch ? null : (
           <Animatable.View animation="fadeInLeftBig" duration={500}>
             <Text style={styles.errorMsg}>
-              รหัสผ่านต้องไม่น้อยกว่า 8 ตัวอักษร
+              ต้องป้อนรหัสผ่านยืนยันให้ตรงกัน
             </Text>
           </Animatable.View>
-          )}
+          )
+          }
           
 
           <View style={styles.textPrivate}>
@@ -296,9 +323,12 @@ const SignUpScreen = ({ navigation }) => {
             </Text>
           </View>
           <View style={styles.button}>
-            <TouchableOpacity style={styles.signIn} onPress={() => {
-              registerHandle(data.email,data.password)
-            }}>
+
+            <TouchableOpacity 
+              style={styles.signIn} 
+              onPress={() => {
+                registerHandle(data.email, data.password)
+              }}>
               <LinearGradient
                 colors={[colors.background1, colors.background]}
                 style={styles.signIn}>
@@ -320,7 +350,7 @@ const SignUpScreen = ({ navigation }) => {
                 styles.signIn,
                 {
                   // borderColor: colors.background,
-                //   borderWidth: 1,
+                  // borderWidth: 1,
                   marginTop: 15,
                 },
               ]}>
@@ -364,7 +394,7 @@ const styles = StyleSheet.create({
   },
   text_header: {
     color: colors.textLight,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     fontSize: 30,
   },
   text_footer: {
@@ -401,7 +431,7 @@ const styles = StyleSheet.create({
   },
   textSign: {
     fontSize: 18,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
   },
   textPrivate: {
     flexDirection: 'row',
@@ -411,4 +441,11 @@ const styles = StyleSheet.create({
   color_textPrivate: {
     color: 'grey',
   },
+  title:{
+    fontSize: 20,
+    paddingBottom: 20
+  },
+  subtitle: {
+    fontSize: 16
+  }
 })
